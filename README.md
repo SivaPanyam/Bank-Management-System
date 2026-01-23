@@ -63,3 +63,24 @@ This project demonstrates database-driven application development using JDBC wit
 
 ## Project Structure
 
+BankManagementSystem/src
+│
+├── DBConnection.java
+├── Customer.java
+├── CustomerDAO.java
+├── AccountDAO.java
+├── TransactionDAO.java
+└── MainApp.java
+
+
+## How to Download and Run Locally
+
+### Option 1: Download ZIP
+1. Click **Code → Download ZIP**
+2. Extract the ZIP file
+3. Open Eclipse → File → Open Projects from File System
+4. Select the extracted folder
+
+### Option 2: Clone Using Git
+```bash
+git clone https://github.com/your-username/Bank-Management-System-Java-JDBC.git
