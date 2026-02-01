@@ -1,70 +1,163 @@
 # Bank Management System
 
-This repository contains the **Bank Management System** project developed in Eclipse.
-
-This README documents:
-- The project overview
-- Correct Git setup for this repository
-- A common Git mistake encountered and how it was fixed
-- Proper steps to clear or reinitialize a GitHub repository safely
+The **Bank Management System** is a Java-based application developed using Eclipse.  
+It follows a **Five-Layer Architecture** to ensure clean separation of concerns, better maintainability, and scalability.
 
 ---
 
-## Project Overview
+## Project Objective
 
-- **Project Name:** Bank Management System  
-- **Language:** Java  
-- **IDE:** Eclipse  
-- **Workspace:** eclipse-workspace  
-- **Purpose:** Academic / learning project for banking operations
+The goal of this project is to simulate basic banking operations such as:
+- Account creation
+- Deposits and withdrawals
+- Balance inquiry
+- Customer and transaction management
 
----
-
-## Correct Project Structure
-
-Bank-Management-System/
-│── src/
-│── bin/ (or target/)
-│── .gitignore
-│── README.md
-
-
-Git should be initialized **inside this folder only**.
+The system is designed using layered architecture to keep the code modular and easy to extend.
 
 ---
 
-## Issue Faced (Important)
+## Five-Layer Architecture Overview
 
-Git was accidentally initialized in a **parent directory** instead of the project folder.  
-Because of this:
+This project follows a **five-layer (n-tier) architecture**:
 
-- Git tried to track the entire `C:\Users\sivap` directory
-- System folders like `AppData`, `Documents`, `NTUSER.DAT` appeared
-- Permission denied warnings occurred
-- `git commit` and `git push` behaved incorrectly
+Presentation Layer
+↓
+Controller Layer
+↓
+Service Layer
+↓
+DAO (Data Access) Layer
+↓
+Database Layer
+
+
+Each layer has a specific responsibility and communicates only with adjacent layers.
 
 ---
 
-## How the Issue Was Fixed
+## 1. Presentation Layer
 
-### 1. Identify wrong Git root
-```powershell
-git rev-parse --show-toplevel
-This revealed that Git was tracking a parent directory.
+**Purpose:**  
+Handles user interaction and input/output.
 
-2. Remove the wrongly initialized Git repository
-Run this only at the incorrect Git root:
+**Responsibilities:**
+- Displays menus and messages
+- Takes user input from console or UI
+- Sends requests to the Controller layer
 
-Remove-Item -Recurse -Force .git
-This removes Git metadata only — no files are deleted.
+**Examples:**
+- `Main.java`
+- Menu or UI classes
 
-3. Initialize Git in the correct project folder
-cd eclipse-workspace\BankingSystem\Bank-Management-System
-git init
-git branch -M main
-4. Commit the project cleanly
-git add .
-git commit -m "Initial commit"
-5. Connect to GitHub and push
-git remote add origin https://github.com/USERNAME/REPO_NAME.git
-git push -u origin main
+---
+
+## 2. Controller Layer
+
+**Purpose:**  
+Acts as a bridge between the Presentation and Service layers.
+
+**Responsibilities:**
+- Receives user requests
+- Validates basic input
+- Calls appropriate service methods
+- Returns responses back to the Presentation layer
+
+**Examples:**
+- `AccountController.java`
+- `TransactionController.java`
+
+---
+
+## 3. Service Layer
+
+**Purpose:**  
+Contains the core business logic of the application.
+
+**Responsibilities:**
+- Implements banking rules and validations
+- Processes transactions
+- Coordinates multiple DAO calls
+- Ensures consistency and integrity
+
+**Examples:**
+- `AccountService.java`
+- `TransactionService.java`
+
+---
+
+## 4. DAO (Data Access Object) Layer
+
+**Purpose:**  
+Handles all data-related operations.
+
+**Responsibilities:**
+- Performs CRUD operations
+- Communicates with the database or data source
+- Isolates database logic from business logic
+
+**Examples:**
+- `AccountDAO.java`
+- `TransactionDAO.java`
+
+---
+
+## 5. Database Layer
+
+**Purpose:**  
+Stores application data persistently.
+
+**Responsibilities:**
+- Maintains tables/records
+- Stores account, customer, and transaction data
+
+**Implementation:**
+- Can be implemented using:
+  - MySQL / PostgreSQL (JDBC)
+  - File-based storage (for learning projects)
+
+---
+
+
+
+## Why Five-Layer Architecture?
+
+- Clear separation of concerns
+- Easier debugging and testing
+- Better scalability
+- Industry-standard design
+- Easy to explain in interviews
+
+---
+
+## Technologies Used
+
+- Java
+- Eclipse IDE
+- JDBC (optional, if database is used)
+- Git & GitHub
+
+---
+
+## How to Run the Project
+
+1. Clone the repository
+2. Open Eclipse → Import → Existing Java Project
+3. Select the project folder
+4. Run `Main.java`
+
+---
+
+## Author
+
+**Siva Panyam**  
+Computer Science & Engineering  
+Academic Project
+
+---
+
+## Status
+
+✔ Five-layer architecture implemented  
+✔ Clean project structure  
+✔ Ready for academic and portfolio use  
